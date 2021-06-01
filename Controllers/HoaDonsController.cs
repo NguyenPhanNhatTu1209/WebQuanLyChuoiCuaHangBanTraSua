@@ -65,76 +65,64 @@ namespace Doan1.Controllers
             }    
             if ((string)Session["QuyenUser"] == "1" || (string)Session["QuyenUser"] == "2")
             {
-                if ((string)Session["PhanLoai"] == "2")
+                var a = LuaChon.Instance.selected;
+                if (a!=null && a!="Tất cả")
                 {
                     hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Chờ xác nhận"
+                             where l.TrangThai == a
                              select l;
+                }    
+               else
+                {
+                    hoadon = from l in db.HoaDons
+                             select l;
+                }               
+                //if (LuaChon.Instance.selected == "Chờ )
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Chờ xác nhận"
+                //             select l;
 
-                }
-                else if ((string)Session["PhanLoai"] == "3")
-                {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Chờ lấy hàng"
-                             select l;
-                }
-                else if ((string)Session["PhanLoai"] == "4")
-                {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Đang giao"
-                             select l;
-                }
-                else if ((string)Session["PhanLoai"] == "5")
-                {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Đã giao"
-                             select l;
-                }
-                else if ((string)Session["PhanLoai"] == "6")
-                {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Đã hủy"
-                             select l;
-                }
-                else
-                {
-                    hoadon = from l in db.HoaDons
-                             select l;
-                }
+                //}
+                //else if ((string)Session["PhanLoai"] == "3")
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Chờ lấy hàng"
+                //             select l;
+                //}
+                //else if ((string)Session["PhanLoai"] == "4")
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Đang giao"
+                //             select l;
+                //}
+                //else if ((string)Session["PhanLoai"] == "5")
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Đã giao"
+                //             select l;
+                //}
+                //else if ((string)Session["PhanLoai"] == "6")
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Đã hủy"
+                //             select l;
+                //}
+                //else
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             select l;
+                //}
             }
             else if((string)Session["QuyenUser"] == "3")
             {
                 var temp = (string)Session["SDT"];
-                if ((string)Session["PhanLoai"] == "2")
+                var a = LuaChon.Instance.selected;
+                if (a != null && a != "Tất cả")
                 {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Chờ xác nhận" && l.SoDienThoai== temp
-                             select l;
-
-                }
-                else if ((string)Session["PhanLoai"] == "3")
-                {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Chờ lấy hàng" && l.SoDienThoai == temp
-                             select l;
-                }
-                else if ((string)Session["PhanLoai"] == "4")
-                {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Đang giao" && l.SoDienThoai == temp
-                             select l;
-                }
-                else if ((string)Session["PhanLoai"] == "5") 
-                {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Đã giao" && l.SoDienThoai == temp
-                             select l;
-                }
-                else if ((string)Session["PhanLoai"] == "6")
-                {
-                    hoadon = from l in db.HoaDons
-                             where l.TrangThai == "Đã hủy" && l.SoDienThoai == temp
-                             select l;
+                        hoadon = from l in db.HoaDons
+                                where l.TrangThai == a && l.SoDienThoai== temp
+                                 select l;
                 }
                 else
                 {
@@ -142,6 +130,43 @@ namespace Doan1.Controllers
                              where l.SoDienThoai == temp
                              select l;
                 }
+                //if ((string)Session["PhanLoai"] == "2")
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Chờ xác nhận" && l.SoDienThoai== temp
+                //             select l;
+
+                //}
+                //else if ((string)Session["PhanLoai"] == "3")
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Chờ lấy hàng" && l.SoDienThoai == temp
+                //             select l;
+                //}
+                //else if ((string)Session["PhanLoai"] == "4")
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Đang giao" && l.SoDienThoai == temp
+                //             select l;
+                //}
+                //else if ((string)Session["PhanLoai"] == "5") 
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Đã giao" && l.SoDienThoai == temp
+                //             select l;
+                //}
+                //else if ((string)Session["PhanLoai"] == "6")
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.TrangThai == "Đã hủy" && l.SoDienThoai == temp
+                //             select l;
+                //}
+                //else
+                //{
+                //    hoadon = from l in db.HoaDons
+                //             where l.SoDienThoai == temp
+                //             select l;
+                //}
             }
             // 5.1. Thêm phần tìm kiếm
             if (!String.IsNullOrEmpty(searchString))
@@ -177,43 +202,49 @@ namespace Doan1.Controllers
 
         public ActionResult btnChoXacNhan(object sender, EventArgs e)
         {
-            
-            Session["PhanLoai"] = LuaChon.Instance.ChoXacNhan() ;
+
+            //Session["PhanLoai"] = LuaChon.Instance.ChoXacNhan() ;
+            LuaChon.Instance.ChoXacNhan();
             return RedirectToAction("Index", "HoaDons");
 
         }
         public ActionResult btnTatCa(object sender, EventArgs e)
         {
+            LuaChon.Instance.TatCa();
 
-            Session["PhanLoai"] = LuaChon.Instance.TatCa();
+            //Session["PhanLoai"] = LuaChon.Instance.TatCa();
             return RedirectToAction("Index", "HoaDons");
 
         }
         public ActionResult btnChoLayHang(object sender, EventArgs e)
         {
+            LuaChon.Instance.ChoLayHang();
 
-            Session["PhanLoai"] = LuaChon.Instance.ChoLayHang();
+            //Session["PhanLoai"] = LuaChon.Instance.ChoLayHang();
             return RedirectToAction("Index", "HoaDons");
 
         }
         public ActionResult btnDangGiao(object sender, EventArgs e)
         {
+            LuaChon.Instance.DangGiao();
 
-            Session["PhanLoai"] = LuaChon.Instance.DangGiao();
+            //Session["PhanLoai"] = LuaChon.Instance.DangGiao();
             return RedirectToAction("Index", "HoaDons");
 
         }
         public ActionResult btnDaGiao(object sender, EventArgs e)
         {
+            LuaChon.Instance.DaGiao();
 
-            Session["PhanLoai"] = LuaChon.Instance.DaGiao();
+            //Session["PhanLoai"] = LuaChon.Instance.DaGiao();
             return RedirectToAction("Index", "HoaDons");
 
         }
         public ActionResult btnDaHuy(object sender, EventArgs e)
         {
+            LuaChon.Instance.DaHuy();
 
-            Session["PhanLoai"] = LuaChon.Instance.DaHuy();
+            //Session["PhanLoai"] = LuaChon.Instance.DaHuy();
             return RedirectToAction("Index", "HoaDons");
 
         }

@@ -47,7 +47,7 @@
 }
 
 <div style="text-align:center">
-    @if ((string)Session["PhanLoai"] == "1")
+    @if (Doan1.Models.Singleton.LuaChon.Instance.selected == "Tất cả" || Doan1.Models.Singleton.LuaChon.Instance.selected==null)
     {
         <button class="btn " style="background-color:darkgrey; border:none" onclick="location.href='@Url.Action("btnTatCa", "HoaDons")'">
 
@@ -61,7 +61,7 @@
             Tất cả
         </button>
     }
-    @if ((string)Session["PhanLoai"] == "2")
+    @if (Doan1.Models.Singleton.LuaChon.Instance.selected == "Chờ xác nhận")
     {
         <button class="btn " style="background-color:darkgrey; border:none" onclick="location.href='@Url.Action("btnChoXacNhan", "HoaDons")'">
             Chờ xác nhận
@@ -73,7 +73,7 @@
             Chờ xác nhận
         </button>
     }
-    @if ((string)Session["PhanLoai"] == "3")
+    @if (Doan1.Models.Singleton.LuaChon.Instance.selected == "Chờ lấy hàng")
     {
         <button class="btn " style="background-color:darkgrey; border:none" onclick="location.href='@Url.Action("btnChoLayHang", "HoaDons")'">
             Chờ lấy hàng
@@ -85,7 +85,7 @@
             Chờ lấy hàng
         </button>
     }
-    @if ((string)Session["PhanLoai"] == "4")
+    @if (Doan1.Models.Singleton.LuaChon.Instance.selected == "Đang giao")
     {
         <button class="btn " style="background-color:darkgrey; border:none" onclick="location.href='@Url.Action("btnDangGiao", "HoaDons")'">
             Đang giao
@@ -97,7 +97,7 @@
             Đang giao
         </button>
     }
-    @if ((string)Session["PhanLoai"] == "5")
+    @if (Doan1.Models.Singleton.LuaChon.Instance.selected == "Đã giao")
     {
         <button class="btn " style="background-color:darkgrey; border:none" onclick="location.href='@Url.Action("btnDaGiao", "HoaDons")'">
             Đã giao
@@ -109,7 +109,7 @@
             Đã giao
         </button>
     }
-    @if ((string)Session["PhanLoai"] == "6")
+    @if (Doan1.Models.Singleton.LuaChon.Instance.selected == "Đã hủy")
     {
         <button class="btn " style="background-color:darkgrey; border:none" onclick="location.href='@Url.Action("btnDaHuy", "HoaDons")'">
             Đã hủy

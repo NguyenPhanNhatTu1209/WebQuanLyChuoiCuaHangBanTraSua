@@ -64,6 +64,19 @@
         cursor: pointer;
         border-left: 1px solid rgb(200,200,200);
     }
+    .chinhanh
+    {
+        margin-top:10px;
+    }
+    .Mon {
+        margin-top: 20px;
+    }
+    .timkiem {
+        margin-top: 30px;
+    }
+    .menumon {
+        margin-top: 70px;
+    }
 </style>
 
 <div style="padding-top:8em"></div>
@@ -75,37 +88,96 @@
         <img src="~/images/icon.png" />
     </div>
 </div>
-<div class="jumbotron" style="background-color:white;color:green;text-align:center">
+    <div style="text-align:center">
+
     @if ((string)Session["QuyenUser"] != "2")
     {
         if ((string)Session["ChiNhanh"] == "2")
         {
-            <button class="btn " style="background-color:white; border:none" onclick="location.href='@Url.Action("chinhanh1", "Menus")'">
-
+            <button class="btn chinhanh" style="background-color:white; border:none; font-size:20px" onclick="location.href='@Url.Action("chinhanh1", "Menus")'">
                 Chi Nhánh 1
             </button>
-            <button class="btn " style="background-color:darkgray; border:none" onclick="location.href='@Url.Action("chinhanh2", "Menus")'">
+            <button class="btn chinhanh" style="background-color:darkgray; border:none; font-size:20px" onclick="location.href='@Url.Action("chinhanh2", "Menus")'">
 
                 Chi Nhánh 2
             </button>
+
         }
         else
         {
-            <button class="btn " style="background-color:darkgray; border:none" onclick="location.href='@Url.Action("chinhanh1", "Menus")'">
+            <button class="btn chinhanh" style="background-color:darkgray; border:none; font-size:20px" onclick="location.href='@Url.Action("chinhanh1", "Menus")'">
 
                 Chi Nhánh 1
             </button>
-            <button class="btn " style="background-color:white; border:none" onclick="location.href='@Url.Action("chinhanh2", "Menus")'">
+            <button class="btn chinhanh" style="background-color:white; border:none; font-size:20px" onclick="location.href='@Url.Action("chinhanh2", "Menus")'">
 
                 Chi Nhánh 2
             </button>
         }
     }
-    
-
-
 </div>
-<div class="container">
+    <div style="text-align:center">
+        @if (Doan1.Models.Factory_Method.MenuSingleton.Instance.selectedMenu == "Tất Cả" || Doan1.Models.Factory_Method.MenuSingleton.Instance.selectedMenu == null)
+        {
+            <button class="btn Mon" style="background-color:darkgrey; border:none ; font-size:15px" onclick="location.href='@Url.Action("btnTatCa", "Menus")'">
+
+                Tất Cả
+            </button>
+        }
+        else
+        {
+            <button class="btn Mon" style="background-color:white; border:none; font-size:15px" onclick="location.href='@Url.Action("btnTatCa", "Menus")'">
+
+                Tất Cả
+            </button>
+        }
+        @if (Doan1.Models.Factory_Method.MenuSingleton.Instance.selectedMenu == "Trà Sữa")
+        {
+            <button class="btn Mon" style="background-color:darkgrey; border:none; font-size:15px" onclick="location.href='@Url.Action("btnTraSua", "Menus")'">
+
+                Trà Sữa
+            </button>
+        }
+        else
+        {
+            <button class="btn Mon" style="background-color:white; border:none; font-size:15px" onclick="location.href='@Url.Action("btnTraSua", "Menus")'">
+
+                Trà Sữa
+            </button>
+        }
+        @if (Doan1.Models.Factory_Method.MenuSingleton.Instance.selectedMenu == "Trà")
+        {
+            <button class="btn Mon" style="background-color:darkgrey; border:none; font-size:15px" onclick="location.href='@Url.Action("btnTra", "Menus")'">
+
+                Trà
+            </button>
+        }
+        else
+        {
+            <button class="btn Mon" style="background-color:white; border:none; font-size:15px" onclick="location.href='@Url.Action("btnTra", "Menus")'">
+
+                Trà
+            </button>
+        }
+        @if (Doan1.Models.Factory_Method.MenuSingleton.Instance.selectedMenu == "Món Khác")
+        {
+            <button class="btn Mon" style="background-color:darkgrey; border:none; font-size:15px" onclick="location.href='@Url.Action("btnMonKhac", "Menus")'">
+
+                Món Khác
+            </button>
+        }
+        else
+        {
+            <button class="btn Mon" style="background-color:white; border:none; font-size:15px" onclick="location.href='@Url.Action("btnMonKhac", "Menus")'">
+
+                Món Khác
+            </button>
+        }
+    </div>
+
+
+
+<div class="container timkiem">
     @using (Html.BeginForm("MenuKhachHang", "Menus", FormMethod.Get))
     {
         <p class="text-center">
@@ -116,7 +188,7 @@
         </p>
     }
 </div>
-<div class="container ">
+<div class="container menumon">
     @foreach (var item in Model)
     {
 

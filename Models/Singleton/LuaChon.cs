@@ -9,6 +9,7 @@ namespace Doan1.Models.Singleton
     {
         private LuaChon() { }
         private static LuaChon instance = null;
+        public string selected ;
         public static LuaChon Instance
         {
             get
@@ -20,29 +21,30 @@ namespace Doan1.Models.Singleton
                 return instance;
             }
         }
-        public string TatCa()
+
+        public void TatCa()
         {
-            return "1";
+            selected = "Tất cả";
         }
-        public string  ChoXacNhan()
+        public void  ChoXacNhan()
         {
-            return "2";
+            selected = "Chờ xác nhận";
         }
-        public string ChoLayHang()
+        public void ChoLayHang()
         {
-            return "3";
+            selected = "Chờ lấy hàng";
         }
-        public string DangGiao()
+        public void DangGiao()
         {
-            return "4";
+            selected = "Đang giao";
         }
-        public string DaGiao()
+        public void DaGiao()
         {
-            return "5";
+            selected = "Đã giao";
         }
-        public string DaHuy()
+        public void DaHuy()
         {
-            return "6";
+            selected = "Đã hủy";
         }
     }
 }

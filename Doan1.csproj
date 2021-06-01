@@ -282,6 +282,13 @@
     <Compile Include="Models\ChiTietHoaDon.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Factory Method\EnumMon.cs" />
+    <Compile Include="Models\Factory Method\MenuSingleton.cs" />
+    <Compile Include="Models\Factory Method\MonKhac.cs" />
+    <Compile Include="Models\Factory Method\PhanLoaiFactory.cs" />
+    <Compile Include="Models\Factory Method\PhanLoaiMon.cs" />
+    <Compile Include="Models\Factory Method\Tra.cs" />
+    <Compile Include="Models\Factory Method\TraSua.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\HoaDon.cs">
       <DependentUpon>Model1.tt</DependentUpon>

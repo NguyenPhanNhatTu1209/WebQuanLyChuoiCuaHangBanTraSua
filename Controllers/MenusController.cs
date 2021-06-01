@@ -18,6 +18,7 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
 using System.Configuration;
+using Doan1.Models.Factory_Method;
 namespace Doan1.Controllers
 {
     public class MenusController : Controller
@@ -362,19 +363,54 @@ namespace Doan1.Controllers
                     Session["ChiNhanh"] = "1";
                 if ((string)Session["ChiNhanh"] == "2")
                 {
-                    var temp = (string)Session["ChiNhanh"];
-                    menu = from l in db.Menus
-                           where l.MaChiNhanh == temp
-                           select l;
-
+                    var a = MenuSingleton.Instance.selectedMenu;
+                    if(a == "Trà Sữa")
+                    {
+                        PhanLoaiMon menu1 = PhanLoaiFactory.getLoai(LoaiThucUong.TraSua);
+                        menu = menu1.LayLoai();
+                    }    
+                    else if(a == "Trà")
+                    {
+                        PhanLoaiMon menu1 = PhanLoaiFactory.getLoai(LoaiThucUong.Tra);
+                        menu = menu1.LayLoai();
+                    }
+                    else if(a == "Món Khác")
+                    {
+                        PhanLoaiMon menu1 = PhanLoaiFactory.getLoai(LoaiThucUong.MonKhac);
+                        menu = menu1.LayLoai();
+                    }else
+                    {
+                        menu = from l in db.Menus
+                               where l.MaChiNhanh == "2"
+                               select l;
+                    }    
+                    
+                    
                 }
                 else
                 {
-                    
-                    var temp = "1";
-                    menu = from l in db.Menus
-                           where l.MaChiNhanh == temp
-                           select l;
+                    var a = MenuSingleton.Instance.selectedMenu;
+                    if (a == "Trà Sữa")
+                    {
+                        PhanLoaiMon menu1 = PhanLoaiFactory.getLoai(LoaiThucUong.TraSua);
+                        menu = menu1.LayLoai();
+                    }
+                    else if (a == "Trà")
+                    {
+                        PhanLoaiMon menu1 = PhanLoaiFactory.getLoai(LoaiThucUong.Tra);
+                        menu = menu1.LayLoai();
+                    }
+                    else if (a == "Món Khác")
+                    {
+                        PhanLoaiMon menu1 = PhanLoaiFactory.getLoai(LoaiThucUong.MonKhac);
+                        menu = menu1.LayLoai();
+                    }
+                    else
+                    {
+                        menu = from l in db.Menus
+                               where l.MaChiNhanh == "1"
+                               select l;
+                    }
 
                 }
             }
@@ -403,6 +439,38 @@ namespace Doan1.Controllers
 
             // 7. Trả về các menu được phân trang theo kích thước và số trang.
             return View(menu.OrderByDescending(x => x.MaMon).ToPagedList(pageNumber, pageSize));
+
+        }
+        public ActionResult btnTra(object sender, EventArgs e)
+        {
+
+            //Session["PhanLoai"] = LuaChon.Instance.ChoXacNhan() ;
+            MenuSingleton.Instance.Tra();
+            return RedirectToAction("MenuKhachHang", "Menus");
+
+        }
+        public ActionResult btnTraSua(object sender, EventArgs e)
+        {
+
+            //Session["PhanLoai"] = LuaChon.Instance.ChoXacNhan() ;
+            MenuSingleton.Instance.TraSua();
+            return RedirectToAction("MenuKhachHang", "Menus");
+
+        }
+        public ActionResult btnMonKhac(object sender, EventArgs e)
+        {
+
+            //Session["PhanLoai"] = LuaChon.Instance.ChoXacNhan() ;
+            MenuSingleton.Instance.MonKhac();
+            return RedirectToAction("MenuKhachHang", "Menus");
+
+        }
+        public ActionResult btnTatCa(object sender, EventArgs e)
+        {
+
+            //Session["PhanLoai"] = LuaChon.Instance.ChoXacNhan() ;
+            MenuSingleton.Instance.TatCa();
+            return RedirectToAction("MenuKhachHang", "Menus");
 
         }
         [AuthorizeController]
