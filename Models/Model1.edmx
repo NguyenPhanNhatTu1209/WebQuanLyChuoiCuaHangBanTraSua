@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QuanLyCuaHangTraSuaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QuanTraSuaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ChiNhanh">
           <Key>
             <PropertyRef Name="MaChiNhanh" />
@@ -92,16 +92,6 @@
           </Key>
           <Property Name="TaiKhoan" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="MatKhau" Type="nvarchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="chitiet_constraint">
           <End Role="Menu" Type="Self.Menu" Multiplicity="1">
@@ -251,7 +241,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QuanLyCuaHangTraSuaModelStoreContainer">
+        <EntityContainer Name="QuanTraSuaModelStoreContainer">
           <EntitySet Name="ChiNhanh" EntityType="Self.ChiNhanh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
@@ -260,7 +250,6 @@
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuanLy" EntityType="Self.QuanLy" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="chitiet_constraint" Association="Self.chitiet_constraint">
             <End Role="Menu" EntitySet="Menu" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
@@ -314,7 +303,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QuanLyCuaHangTraSuaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QuanTraSuaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="ChiNhanh">
           <Key>
             <PropertyRef Name="MaChiNhanh" />
@@ -426,16 +415,6 @@
           </Key>
           <Property Name="TaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_HoaDon_ChiNhanh">
           <End Role="ChiNhanh" Type="Self.ChiNhanh" Multiplicity="1" />
@@ -594,7 +573,6 @@
           <EntitySet Name="Menus" EntityType="Self.Menu" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
           <EntitySet Name="QuanLies" EntityType="Self.QuanLy" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <AssociationSet Name="FK_HoaDon_ChiNhanh" Association="Self.FK_HoaDon_ChiNhanh">
             <End Role="ChiNhanh" EntitySet="ChiNhanhs" />
             <End Role="HoaDon" EntitySet="HoaDons" />
@@ -649,9 +627,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QuanLyCuaHangTraSuaModelStoreContainer" CdmEntityContainer="QuanLyCuaHangTraSuaEntities1">
+        <EntityContainerMapping StorageEntityContainer="QuanTraSuaModelStoreContainer" CdmEntityContainer="QuanLyCuaHangTraSuaEntities1">
           <EntitySetMapping Name="ChiNhanhs">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.ChiNhanh">
+            <EntityTypeMapping TypeName="QuanTraSuaModel.ChiNhanh">
               <MappingFragment StoreEntitySet="ChiNhanh">
                 <ScalarProperty Name="MaChiNhanh" ColumnName="MaChiNhanh" />
                 <ScalarProperty Name="TenChiNhanh" ColumnName="TenChiNhanh" />
@@ -660,7 +638,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChiTietHoaDons">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.ChiTietHoaDon">
+            <EntityTypeMapping TypeName="QuanTraSuaModel.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
                 <ScalarProperty Name="MaMon" ColumnName="MaMon" />
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
@@ -673,7 +651,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.HoaDon">
+            <EntityTypeMapping TypeName="QuanTraSuaModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
@@ -686,7 +664,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.KhachHang">
+            <EntityTypeMapping TypeName="QuanTraSuaModel.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
@@ -698,7 +676,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LienHes">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.LienHe">
+            <EntityTypeMapping TypeName="QuanTraSuaModel.LienHe">
               <MappingFragment StoreEntitySet="LienHe">
                 <ScalarProperty Name="MaLienHe" ColumnName="MaLienHe" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -709,7 +687,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Menus">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.Menu">
+            <EntityTypeMapping TypeName="QuanTraSuaModel.Menu">
               <MappingFragment StoreEntitySet="Menu">
                 <ScalarProperty Name="MaMon" ColumnName="MaMon" />
                 <ScalarProperty Name="TenMon" ColumnName="TenMon" />
@@ -722,7 +700,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.NhanVien">
+            <EntityTypeMapping TypeName="QuanTraSuaModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
                 <ScalarProperty Name="MaNV" ColumnName="MaNV" />
                 <ScalarProperty Name="TenNV" ColumnName="TenNV" />
@@ -735,21 +713,10 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuanLies">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.QuanLy">
+            <EntityTypeMapping TypeName="QuanTraSuaModel.QuanLy">
               <MappingFragment StoreEntitySet="QuanLy">
                 <ScalarProperty Name="TaiKhoan" ColumnName="TaiKhoan" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="QuanLyCuaHangTraSuaModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

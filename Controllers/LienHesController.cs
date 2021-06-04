@@ -14,8 +14,9 @@ namespace Doan1.Controllers
     {
         private QuanLyCuaHangTraSuaEntities1 db = new QuanLyCuaHangTraSuaEntities1();
 
-
-        // GET: LienHes/Edit/5
+        int a;
+        int b;
+        // GET: LienHes/Edit/5 abc
         public ActionResult Edit()
         {
             LienHe lienHe = db.LienHes.Find("1");
