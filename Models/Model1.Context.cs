@@ -33,6 +33,5 @@ namespace Doan1.Models
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<QuanLy> QuanLies { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
